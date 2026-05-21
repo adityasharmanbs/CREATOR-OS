@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  
+  /* Dark theme background */
+  background: linear-gradient(
+    135deg,
+    #0f172a 0%,
+    #1e1b4b 25%,
+    #0f0f23 50%,
+    #1a1a3f 75%,
+    #0f172a 100%
+  );
+  background-attachment: fixed;
+  color: #f1f5f9;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00d9ff, #c400ff);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #00f0ff, #ff006e);
+  box-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+}
+
+/* Glassmorphism component utilities */
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-3xl border border-white/10 rounded-2xl;
+  }
+
+  .glass-card-sm {
+    @apply bg-white/[0.03] backdrop-blur-2xl border border-white/5 rounded-xl;
+  }
+
+  .glass-button {
+    @apply relative px-4 py-2 rounded-lg bg-white/5 border border-white/10 
+           text-white/80 font-medium transition-all duration-300
+           hover:bg-white/10 hover:border-white/20 hover:text-white
+           active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .glass-button-primary {
+    @apply bg-gradient-to-r from-cyan-500 to-purple-600 border-0 text-white
+           hover:shadow-glow-lg hover:scale-105;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 
+           bg-clip-text text-transparent;
+  }
+
+  .gradient-text-neon {
+    @apply bg-gradient-to-r from-cyan-300 via-purple-400 to-pink-400 
+           bg-clip-text text-transparent;
+  }
+
+  .neon-border {
+    @apply border border-transparent bg-clip-padding 
+           bg-gradient-to-r from-cyan-500 to-purple-600;
+  }
+
+  .glow-effect {
+    @apply shadow-glow-md;
+  }
+
+  .glow-effect-lg {
+    @apply shadow-neon;
+  }
+}
+
+/* Input and form styling */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  @apply bg-white/5 border border-white/10 rounded-lg px-4 py-2 
+         text-white/90 placeholder-white/40 transition-all duration-200
+         focus:bg-white/8 focus:border-cyan-500/50 focus:outline-none
+         focus:ring-2 focus:ring-cyan-500/20;
+}
+
+textarea {
+  @apply resize-vertical;
+}
+
+/* Selection color */
+::selection {
+  @apply bg-cyan-500/30 text-white;
+}
+
+::-moz-selection {
+  @apply bg-cyan-500/30 text-white;
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+  @apply outline-none ring-2 ring-cyan-500/50 ring-offset-2 ring-offset-slate-900;
+}
+
+/* Smooth transitions globally */
+* {
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* Button reset and standard styling */
+button {
+  @apply cursor-pointer font-medium transition-all duration-200;
+}
+
+button:disabled {
+  @apply cursor-not-allowed opacity-50;
+}
